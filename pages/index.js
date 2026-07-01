@@ -53,7 +53,7 @@ export default function Home() {
         <div className="nav-inner">
           <a href="#top" className="brand">
             <div className="brand-logo">
-              <Image src="/images/logo-white.png" alt="NutriPEM Logo" width={110} height={44} style={{objectFit:"contain"}} />
+              <Image src="/logo-white.png" alt="NutriPEM Logo" width={110} height={44} style={{objectFit:"contain"}} />
             </div>
           </a>
           <nav className={`links ${menuOpen ? "open" : ""}`}>
@@ -121,7 +121,7 @@ export default function Home() {
               <div className="hero-photo-ring" />
               <div className="hero-photo-inner">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/profile.jpg"
                   alt="Pasquale Eugenio Musella — Nutrizionista Sportivo"
                   fill
                   style={{ objectFit: "cover", objectPosition: "center top" }}
@@ -170,7 +170,7 @@ export default function Home() {
             <FadeIn delay={0.1} className="chisono-photo-wrap">
               <div className="chisono-photo">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/profile.jpg"
                   alt="Pasquale Eugenio Musella"
                   fill
                   style={{ objectFit: "cover", objectPosition: "center top" }}
@@ -208,7 +208,7 @@ export default function Home() {
             {["isak-composition","isak-distribution","isak-somatotype"].map((name, i) => (
               <FadeIn key={name} delay={i * 0.12} className="isak-chart-card">
                 <Image
-                  src={`/images/${name}.jpg`}
+                  src={`/${name}.jpg`}
                   alt={`Grafico ISAK ${name}`}
                   width={400}
                   height={320}
@@ -375,7 +375,7 @@ export default function Home() {
                 {["isak-health","isak-adiposity"].map((name, i) => (
                   <div key={name} className="isak-full-chart">
                     <Image
-                      src={`/images/${name}.jpg`}
+                      src={`/${name}.jpg`}
                       alt="Grafico composizione corporea ISAK"
                       width={500}
                       height={400}
@@ -548,7 +548,7 @@ export default function Home() {
       <footer className="footer">
         <div className="wrap footer-inner">
           <div className="footer-logo">
-            <Image src="/images/logo-white.png" alt="NutriPEM" width={120} height={48} style={{ objectFit: "contain" }} />
+            <Image src="/logo-white.png" alt="NutriPEM" width={120} height={48} style={{ objectFit: "contain" }} />
           </div>
           <div className="footer-links">
             {[["#chisono","Chi Sono"],["#certificazioni","Certificazioni"],["#formazione","Formazione"],["#esperienze","Esperienze"],["#servizi","Servizi"],["#contatti","Contatti"],["/admin","Admin"]].map(([href, label]) => (
