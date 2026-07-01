@@ -53,11 +53,7 @@ export default function Home() {
         <div className="nav-inner">
           <a href="#top" className="brand">
             <div className="brand-logo">
-              <Image src="/logo-white.png" alt="NutriPEM Logo" width={150} height={60} style={{objectFit:"contain"}} />
-              <div className="brand-text-wrap">
-                <div className="brand-name-text">NutriPEM</div>
-                <div className="brand-motto">Intervention on your performance</div>
-              </div>
+              <Image src="/logo-white.png" alt="NutriPEM Logo" width={160} height={64} style={{objectFit:"contain"}} />
             </div>
           </a>
           <nav className={`links ${menuOpen ? "open" : ""}`}>
@@ -552,7 +548,7 @@ export default function Home() {
       <footer className="footer">
         <div className="wrap footer-inner">
           <div className="footer-logo">
-            <Image src="/logo-white.png" alt="NutriPEM" width={120} height={48} style={{ objectFit: "contain" }} />
+            <Image src="/logo-white.png" alt="NutriPEM" width={180} height={72} style={{ objectFit: "contain" }} />
           </div>
           <div className="footer-links">
             {[["#chisono","Chi Sono"],["#certificazioni","Certificazioni"],["#formazione","Formazione"],["#esperienze","Esperienze"],["#servizi","Servizi"],["#contatti","Contatti"],["/admin","Admin"]].map(([href, label]) => (
