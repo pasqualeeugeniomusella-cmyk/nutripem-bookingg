@@ -227,7 +227,7 @@ export default function Home() {
           </FadeIn>
           <div className="timeline">
             {[
-              { year:"2012",     title:"Diploma — Istituto Professionale "R. Drengot"", desc:"Aversa (CE)." },
+              { year:"2012",     title:"Diploma — Istituto Professionale R. Drengot", desc:"Aversa (CE)." },
               { year:"2017",     title:"Laurea in Tecnologie Alimentari", desc:"Università degli Studi di Napoli Federico II." },
               { year:"2020",     title:"Laurea Magistrale in Scienze della Nutrizione", desc:"Università degli Studi di Napoli Federico II." },
               { year:"2021",     title:"Abilitazione Ordine Nazionale dei Biologi", desc:"Matricola AA_087812." },
