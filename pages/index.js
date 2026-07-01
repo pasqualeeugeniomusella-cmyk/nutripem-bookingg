@@ -99,8 +99,6 @@ export default function Home() {
               {[
                 ["#chisono", t.nav.chiSono],
                 ["#certificazioni", t.nav.certificazioni],
-                ["#formazione", t.nav.formazione],
-                ["#esperienze", t.nav.esperienze],
                 ["#servizi", t.nav.servizi],
                 ["#contatti", t.nav.contatti],
               ].map(([href, label]) => (
@@ -191,131 +189,75 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── CHI SONO ─── */}
+        {/* ─── CHI SONO + PERCORSO + ESPERIENZE (compatto) ─── */}
         <section className="section bg-white" id="chisono">
           <div className="wrap">
             <FadeIn>
               <div className="kicker"><span className="dot" />{t.chiSono.kicker}</div>
               <h2>{t.chiSono.title} <span className="accent">{t.chiSono.accent}</span></h2>
             </FadeIn>
-            <div className="chisono-grid">
+
+            {/* TOP GRID: foto + bio + numeri */}
+            <div className="profilo-grid">
               <FadeIn delay={0.1} className="chisono-photo-wrap">
                 <div className="chisono-photo">
                   <Image src="/profile.jpg" alt="Pasquale Eugenio Musella" fill style={{ objectFit:"cover", objectPosition:"center top" }} />
                   <div className="chisono-photo-badge"><span>🧬</span><span>{t.chiSono.badge}</span></div>
                 </div>
               </FadeIn>
-              <FadeIn delay={0.2} className="bio">
-                <p>{t.chiSono.p1}</p>
-                <p>{t.chiSono.p2}</p>
-                <p>{t.chiSono.p3}</p>
+              <FadeIn delay={0.2} className="profilo-right">
+                <p className="profilo-bio">{t.chiSono.p1}</p>
+                <p className="profilo-bio">{t.chiSono.p2}</p>
+                <div className="profilo-numeri">
+                  <div className="pn-card"><div className="pn-num">2</div><div className="pn-lbl">{lang==="en"?"Federico II Degrees":lang==="es"?"Títulos Federico II":lang==="pt"?"Diplomas Federico II":lang==="ar"?"درجات فيدريكو II":lang==="ru"?"Дипломов":lang==="zh"?"学位":"Lauree Federico II"}</div></div>
+                  <div className="pn-card"><div className="pn-num">1</div><div className="pn-lbl">{lang==="en"?"Real Madrid Master":lang==="es"?"Máster Real Madrid":lang==="pt"?"Master Real Madrid":lang==="ar"?"ماستر ريال مدريد":lang==="ru"?"Мастер Реал Мадрид":lang==="zh"?"皇马硕士":"Master Real Madrid"}</div></div>
+                  <div className="pn-card accent-card"><div className="pn-num">5+</div><div className="pn-lbl">{lang==="en"?"Intl. Certifications":lang==="es"?"Cert. internacionales":lang==="pt"?"Cert. internacionais":lang==="ar"?"شهادات دولية":lang==="ru"?"Сертификатов":lang==="zh"?"国际证书":"Cert. internazionali"}</div></div>
+                  <div className="pn-card"><div className="pn-num">ISAK 2</div><div className="pn-lbl">{lang==="en"?"Anthropometrist":lang==="es"?"Antropometrista":lang==="pt"?"Antropometrista":lang==="ar"?"أنثروبومترية":lang==="ru"?"Антропометрист":lang==="zh"?"体型测量师":"Antropometrista"}</div></div>
+                </div>
                 <div className="bio-tags">{t.chiSono.tags.map(tag => <span key={tag} className="bio-tag">{tag}</span>)}</div>
               </FadeIn>
             </div>
-          </div>
-        </section>
 
-        {/* ─── ISAK STRIP ─── */}
-        <section className="isak-strip">
-          <div className="wrap">
-            <FadeIn>
-              <div className="isak-strip-label">
-                <span className="isak-badge">{t.isak.label}</span>
-                <span>{t.isak.desc}</span>
+            {/* MILESTONES: i momenti chiave del percorso */}
+            <FadeIn delay={0.1}>
+              <div className="milestones-label">
+                <span className="milestone-kicker">📍 {lang==="en"?"Key milestones":lang==="es"?"Hitos clave":lang==="pt"?"Marcos principais":lang==="ar"?"المحطات الرئيسية":lang==="ru"?"Ключевые этапы":lang==="zh"?"关键里程碑":"Tappe fondamentali"}</span>
               </div>
             </FadeIn>
-            <div className="isak-charts-row">
-              {["isak-composition","isak-distribution","isak-somatotype"].map((name, i) => (
-                <FadeIn key={name} delay={i * 0.12} className="isak-chart-card">
-                  <Image src={`/${name}.jpg`} alt={`ISAK chart`} width={400} height={320} style={{ width:"100%", height:"auto", borderRadius:12 }} />
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── CERTIFICAZIONI ─── */}
-        <section className="section bg-soft" id="certificazioni">
-          <div className="wrap">
-            <FadeIn>
-              <div className="kicker"><span className="dot" />{t.certificazioni.kicker}</div>
-              <h2>{t.certificazioni.title} <span className="accent">{t.certificazioni.accent}</span></h2>
-              <p className="sub">{t.certificazioni.sub}</p>
-            </FadeIn>
-            <div className="stats-row">
-              {t.certificazioni.stats.map(([n, l], i) => (
-                <FadeIn key={i} delay={i * 0.1}>
-                  <div className="stat-card"><div className="stat-num">{n}</div><div className="stat-lbl">{l}</div></div>
-                </FadeIn>
-              ))}
-            </div>
-            <div className="cert-grid">
-              {CERTS.map((c, i) => (
-                <FadeIn key={i} delay={i * 0.07}>
-                  <div className={`cert-card cert-${c.color} ${c.highlight ? "cert-highlight" : ""}`}>
-                    {c.top && <span className="top-cert">{t.certificazioni.topCert}</span>}
-                    {c.highlight && <span className="figc-badge">{t.certificazioni.accessLabel}</span>}
-                    <div className="cert-icon">{c.icon}</div>
-                    <div>
-                      <div className="cert-meta">
-                        <span className="tag-pill">{c.period}</span>
-                        <span className="tag-pill">{c.type}</span>
-                      </div>
-                      <div className="cert-title">{c.title}</div>
-                      <div className="cert-org">{c.org}</div>
-                      {c.highlight && <div className="figc-note">{t.certificazioni.figcNote}</div>}
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── FORMAZIONE ─── */}
-        <section className="section bg-white" id="formazione">
-          <div className="wrap">
-            <FadeIn>
-              <div className="kicker"><span className="dot" />{t.formazione.kicker}</div>
-              <h2>{t.formazione.title} <span className="accent">{t.formazione.accent}</span></h2>
-            </FadeIn>
-            <div className="tl-wrap">
-              {TL_ITEMS.map((item, i) => (
-                <FadeIn key={i} delay={i * 0.05}>
-                  <div className="tl-item" style={{ "--tl-bg": item.color }}>
-                    <div className="tl-left">
-                      <div className="tl-icon">{item.icon}</div>
-                      <div className="tl-year">{item.year}</div>
-                    </div>
-                    <div className="tl-body">
-                      <div className="tl-title">{item.title}</div>
-                      <div className="tl-desc">{item.desc}</div>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── ESPERIENZE ─── */}
-        <section className="section bg-soft" id="esperienze">
-          <div className="wrap">
-            <FadeIn>
-              <div className="kicker"><span className="dot" />{t.esperienze.kicker}</div>
-              <h2>{t.esperienze.title} <span className="accent">{t.esperienze.accent}</span></h2>
-            </FadeIn>
-            <div className="work-grid">
-              {t.esperienze.items.map((w, i) => (
+            <div className="milestones-row">
+              {[
+                { year:"2020", icon:"🎓", label:lang==="en"?"MSc Nutrition":lang==="es"?"Máster Nutrición":lang==="pt"?"Mestrado Nutrição":lang==="ar"?"ماجستير تغذية":lang==="ru"?"Магистр питания":lang==="zh"?"营养学硕士":"Laurea Magistrale Nutrizione", sub:"Federico II" },
+                { year:"2021", icon:"🔬", label:lang==="en"?"FNOB Biologist":lang==="es"?"Biólogo FNOB":lang==="pt"?"Biólogo FNOB":lang==="ar"?"بيولوجي FNOB":lang==="ru"?"Биолог FNOB":lang==="zh"?"生物学家FNOB":"Biologo FNOB", sub:"AA_087812" },
+                { year:"2022–23", icon:"🏟️", label:lang==="en"?"Real Madrid CF":lang==="es"?"Real Madrid CF":lang==="pt"?"Real Madrid CF":lang==="ar"?"ريال مدريد CF":lang==="ru"?"Реал Мадрид CF":lang==="zh"?"皇家马德里CF":"Tirocinio Real Madrid", sub:lang==="en"?"Internship + Master":lang==="es"?"Prácticas + Máster":lang==="pt"?"Estágio + Master":lang==="ar"?"تدريب + ماستر":lang==="ru"?"Стажировка + Мастер":lang==="zh"?"实习+硕士":"Tirocinio + Master" },
+                { year:"2023", icon:"📏", label:"ISAK Level 2", sub:lang==="en"?"Anthropometrist":lang==="es"?"Antropometrista":lang==="pt"?"Antropometrista":lang==="ar"?"أنثروبومترية":lang==="ru"?"Антропометрист":lang==="zh"?"体型测量师":"Antropometrista" },
+                { year:"2023–26", icon:"🏀", label:lang==="en"?"PSA Basket":lang==="es"?"PSA Basket":lang==="pt"?"PSA Basket":lang==="ar"?"PSA باسكت":lang==="ru"?"PSA Basket":lang==="zh"?"PSA篮球":"PSA Basket", sub:lang==="en"?"Sports Nutritionist":lang==="es"?"Nutricionista deportivo":lang==="pt"?"Nutricionista esportivo":lang==="ar"?"أخصائي تغذية":lang==="ru"?"Нутрициолог":lang==="zh"?"运动营养师":"Nutrizionista Sportivo" },
+                { year:"2026", icon:"⚽", label:lang==="en"?"FIFA + FIGC + Barça":lang==="ar"?"فيفا + FIGC + برشلونة":lang==="zh"?"FIFA+FIGC+巴萨":"FIFA + FIGC + Barça", sub:lang==="en"?"3 top certifications":lang==="es"?"3 top certificaciones":lang==="pt"?"3 top certificações":lang==="ar"?"3 شهادات قمة":lang==="ru"?"3 топ сертификата":lang==="zh"?"3项顶级证书":"3 certificazioni top" },
+              ].map((m, i) => (
                 <FadeIn key={i} delay={i * 0.08}>
-                  <div className={`work-card ${i === 2 ? "work-featured" : ""}`}>
-                    <div className="work-icon-wrap">{["🏀","🦇","🏟️","🎤","📖"][i]}</div>
-                    <div>
-                      {i === 2 && <span className="work-feat-label">{t.esperienze.featLabel}</span>}
-                      <div className="work-period">{w.period}</div>
-                      <div className="work-title">{w.title}</div>
-                      <div className="work-desc">{w.desc}</div>
-                    </div>
+                  <div className="milestone-card">
+                    <div className="ms-year">{m.year}</div>
+                    <div className="ms-icon">{m.icon}</div>
+                    <div className="ms-label">{m.label}</div>
+                    <div className="ms-sub">{m.sub}</div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+
+            {/* ESPERIENZE HIGHLIGHT: solo le 3 più importanti */}
+            <div className="exp-highlight-row">
+              {[
+                { icon:"🏟️", color:"#fff3e0", border:"#f5c87a", title:lang==="en"?"Real Madrid CF — Internship":lang==="es"?"Real Madrid CF — Prácticas":lang==="pt"?"Real Madrid CF — Estágio":lang==="ar"?"ريال مدريد CF — تدريب":lang==="ru"?"Реал Мадрид CF — Стажировка":lang==="zh"?"皇马CF-实习":"Real Madrid CF — Tirocinio", period:"Dic 2022 – Giu 2023", desc:lang==="en"?"Nutrition department of Real Madrid's Medical Services, working with elite athletes.":lang==="es"?"Área de nutrición de los Servicios Médicos del Real Madrid, con atletas de élite.":lang==="pt"?"Área de nutrição dos Serviços Médicos do Real Madrid, com atletas de elite.":lang==="ar"?"قسم التغذية في الخدمات الطبية لريال مدريد مع الرياضيين من النخبة.":lang==="ru"?"Отдел питания медицинских служб Реал Мадрид, работа с элитными спортсменами.":lang==="zh"?"皇家马德里医疗部门营养科，与精英运动员合作。":"Area nutrizione Servizi Medici del Real Madrid, con atleti d'élite.", featured:true },
+                { icon:"🏀", color:"#e8f0fb", border:"#a9c4ee", title:lang==="en"?"PSA Basket Sant'Antimo":lang==="ar"?"PSA Basket Sant'Antimo":lang==="zh"?"PSA篮球":"PSA Basket Sant'Antimo", period:"Nov 2023 – Mag 2026", desc:lang==="en"?"Sports nutritionist for the club across National Series B, Series C and youth sector.":lang==="es"?"Nutricionista deportivo del club en Serie B Nacional, Serie C y cantera.":lang==="pt"?"Nutricionista esportivo do clube na Série B Nacional, Série C e setor juvenil.":lang==="ar"?"أخصائي تغذية رياضية للنادي في الدوري الوطني B والدوري C والقطاع الشبابي.":lang==="ru"?"Нутрициолог клуба в Национальной серии B, серии C и молодёжном секторе.":lang==="zh"?"俱乐部运动营养师，覆盖全国B联赛、C联赛及青训。":"Nutrizionista del club tra Serie B Nazionale, Serie C e settore giovanile.", featured:false },
+                { icon:"🦇", color:"#fcedf0", border:"#eaaab6", title:lang==="en"?"Valencia CF Academy":lang==="ar"?"أكاديمية فالنسيا CF":lang==="zh"?"巴伦西亚CF学院":"Valencia CF Academy", period:"Nov 2024 – Lug 2025", desc:lang==="en"?"Applied nutrition for youth football — Technical Partnership Caserta, AG Soccer School.":lang==="es"?"Nutrición aplicada al fútbol juvenil — Technical Partnership Caserta, AG Soccer School.":lang==="pt"?"Nutrição aplicada ao futebol juvenil — Technical Partnership Caserta, AG Soccer School.":lang==="ar"?"تغذية مطبقة لكرة القدم الشبابية — Technical Partnership Caserta, AG Soccer School.":lang==="ru"?"Питание для молодёжного футбола — Technical Partnership Caserta, AG Soccer School.":lang==="zh"?"青训足球应用营养——卡塞尔塔技术合作，AG足球学校。":"Nutrizione applicata al calcio giovanile — Technical Partnership Caserta.", featured:false },
+              ].map((e, i) => (
+                <FadeIn key={i} delay={i * 0.1}>
+                  <div className="exp-hl-card" style={{ background:e.color, borderColor:e.border }}>
+                    {e.featured && <span className="exp-hl-feat">⭐ {lang==="en"?"Elite exp.":lang==="es"?"Exp. élite":lang==="pt"?"Exp. elite":lang==="ar"?"خبرة نخبة":lang==="ru"?"Элит. опыт":lang==="zh"?"精英经历":"Esperienza d'élite"}</span>}
+                    <div className="exp-hl-icon">{e.icon}</div>
+                    <div className="exp-hl-title">{e.title}</div>
+                    <div className="exp-hl-period">{e.period}</div>
+                    <div className="exp-hl-desc">{e.desc}</div>
                   </div>
                 </FadeIn>
               ))}
@@ -469,7 +411,7 @@ export default function Home() {
               <Image src="/logo-white.png" alt="NutriPEM" width={180} height={72} style={{ objectFit:"contain" }} />
             </div>
             <div className="footer-links">
-              {[["#chisono", t.nav.chiSono],["#certificazioni", t.nav.certificazioni],["#formazione", t.nav.formazione],["#esperienze", t.nav.esperienze],["#servizi", t.nav.servizi],["#contatti", t.nav.contatti],["/admin","Admin"]].map(([href, label]) => (
+              {[["#chisono", t.nav.chiSono],["#certificazioni", t.nav.certificazioni],["#servizi", t.nav.servizi],["#contatti", t.nav.contatti],["/admin","Admin"]].map(([href, label]) => (
                 <a key={href} href={href}>{label}</a>
               ))}
             </div>
@@ -586,6 +528,45 @@ export default function Home() {
         .bio p strong{color:var(--navy);}
         .bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
         .bio-tag{background:var(--paper-soft);border:1px solid var(--line);padding:7px 16px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--navy);}
+
+        /* PROFILO COMPATTO */
+        .profilo-grid{display:grid;grid-template-columns:0.65fr 1.35fr;gap:52px;align-items:start;margin-top:48px;}
+        @media(max-width:880px){.profilo-grid{grid-template-columns:1fr;}}
+        .profilo-right{display:flex;flex-direction:column;gap:14px;}
+        .profilo-bio{color:#4a5566;font-size:15.5px;line-height:1.7;}
+        .profilo-bio strong{color:var(--navy);}
+        .profilo-numeri{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 14px;}
+        @media(max-width:600px){.profilo-numeri{grid-template-columns:repeat(2,1fr);}}
+        .pn-card{background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center;}
+        .accent-card{background:var(--navy);border-color:var(--navy);}
+        .accent-card .pn-num{color:var(--lime);}
+        .accent-card .pn-lbl{color:var(--muted);}
+        .pn-num{font-size:22px;font-weight:800;color:var(--navy);font-family:'Sora',sans-serif;line-height:1;}
+        .pn-lbl{font-size:11px;color:#5b6878;margin-top:6px;font-weight:600;line-height:1.3;}
+
+        /* MILESTONES */
+        .milestones-label{margin:52px 0 20px;}
+        .milestone-kicker{background:var(--navy);color:var(--lime);font-size:12px;font-weight:800;padding:7px 18px;border-radius:999px;font-family:'Sora',sans-serif;}
+        .milestones-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:48px;}
+        @media(max-width:1000px){.milestones-row{grid-template-columns:repeat(3,1fr);}}
+        @media(max-width:560px){.milestones-row{grid-template-columns:repeat(2,1fr);}}
+        .milestone-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 14px;text-align:center;transition:transform .2s,box-shadow .2s;}
+        .milestone-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px -8px rgba(0,0,0,.1);border-color:var(--lime-dim);}
+        .ms-year{font-size:11px;font-weight:800;color:var(--lime-dim);font-family:'Sora',sans-serif;letter-spacing:.06em;margin-bottom:8px;}
+        .ms-icon{font-size:26px;margin-bottom:8px;}
+        .ms-label{font-size:13px;font-weight:700;color:var(--navy);line-height:1.3;}
+        .ms-sub{font-size:11.5px;color:#5b6878;margin-top:5px;}
+
+        /* ESPERIENZE HIGHLIGHT */
+        .exp-highlight-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+        @media(max-width:880px){.exp-highlight-row{grid-template-columns:1fr;}}
+        .exp-hl-card{position:relative;border-radius:18px;border:1.5px solid;padding:26px 22px;transition:transform .2s,box-shadow .2s;}
+        .exp-hl-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -10px rgba(0,0,0,.12);}
+        .exp-hl-feat{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;margin-bottom:14px;font-family:'Sora',sans-serif;}
+        .exp-hl-icon{font-size:28px;margin-bottom:12px;}
+        .exp-hl-title{font-size:16px;font-weight:800;color:var(--navy);font-family:'Sora',sans-serif;margin-bottom:6px;line-height:1.3;}
+        .exp-hl-period{font-size:12px;font-weight:700;color:var(--lime-dim);font-family:'Sora',sans-serif;margin-bottom:10px;}
+        .exp-hl-desc{font-size:13.5px;color:#5b6878;line-height:1.6;}
 
         .isak-strip{background:var(--navy);padding:60px 0;}
         .isak-strip-label{display:flex;align-items:center;gap:16px;margin-bottom:30px;flex-wrap:wrap;}
