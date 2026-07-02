@@ -1,7 +1,7 @@
 {
   "name": "NutriPEM",
   "short_name": "NutriPEM",
-  "description": "Pasquale Eugenio Musella — Nutrizionista Sportivo",
+  "description": "Nutrizionista Sportivo",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1d31",
